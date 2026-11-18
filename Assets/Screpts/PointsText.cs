@@ -9,7 +9,7 @@ public class PointText : MonoBehaviour
 	{
 		if (PointsManager.Instance != null)
 		{
-			pointText.text = "POINT : "
+			pointText.text = "所持ポイント： "
 				+ PointsManager.Instance.Points;
 		}
 	}

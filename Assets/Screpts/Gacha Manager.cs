@@ -25,15 +25,15 @@ public class GachaManager : MonoBehaviour
 		}
 		else if (random < 85)
 		{
-			resultText.text = "R：アイススキン！";
+			resultText.text = "R：レアスキン！";
 		}
 		else if (random < 97)
 		{
-			resultText.text = "SR：マグマスキン！";
+			resultText.text = "SR：スーパーレアスキン！";
 		}
 		else
 		{
-			resultText.text = "SSR：クリスタルスキン！！";
+			resultText.text = "HR：ハイパーレアスキン！！";
 		}
 	}
 }
