@@ -17,7 +17,11 @@ public class GachaCapsuleAnimation : MonoBehaviour
 	[SerializeField] private float openDuration = 0.5f;
 
 	[Header("スキン表示")]
-	[SerializeField] private Image skinResultImage;
+	[SerializeField] private GameObject wolfSkin;
+
+	[Header("光の演出")]
+	[SerializeField] private GachaGlowEffect glowEffect;
+	[SerializeField] private Color glowColor = Color.yellow;
 
 	private Vector3 originalScale;
 	private Vector2 topStartPosition;
@@ -42,6 +46,14 @@ public class GachaCapsuleAnimation : MonoBehaviour
 
 		capsuleTop.gameObject.SetActive(false);
 		capsuleBottom.gameObject.SetActive(false);
+
+		wolfSkin.SetActive(false);
+	}
+
+	// ガチャのレア度に合わせて光の色を設定
+	public void SetGlowColor(Color color)
+	{
+		glowColor = color;
 	}
 
 	public void PlayAnimation()
@@ -57,6 +69,15 @@ public class GachaCapsuleAnimation : MonoBehaviour
 
 		capsuleTop.gameObject.SetActive(true);
 		capsuleBottom.gameObject.SetActive(true);
+
+		wolfSkin.SetActive(false);
+
+		// カプセルを最初の状態に戻す
+		capsuleTop.anchoredPosition = topStartPosition;
+		capsuleBottom.anchoredPosition = bottomStartPosition;
+
+		capsuleTop.localRotation = topStartRotation;
+		capsuleBottom.localRotation = bottomStartRotation;
 
 		transform.localScale = Vector3.zero;
 
@@ -113,8 +134,11 @@ public class GachaCapsuleAnimation : MonoBehaviour
 			yield return null;
 		}
 
+		// 光を再生
+		glowEffect.PlayGlow(glowColor);
+
 		// スキンを表示
-		skinResultImage.gameObject.SetActive(true);
+		wolfSkin.SetActive(true);
 
 		isPlaying = false;
 	}

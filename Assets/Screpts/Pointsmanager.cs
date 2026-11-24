@@ -48,4 +48,10 @@ public class PointsManager : MonoBehaviour
 		PlayerPrefs.SetInt("Points", points);
 		PlayerPrefs.Save();
 	}
+	[ContextMenu("ポイントを初期値にリセット")]
+	private void ResetPoints()
+	{
+		points = initialPoints;
+		SavePoints();
+	}
 }
