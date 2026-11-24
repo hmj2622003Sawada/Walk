@@ -16,6 +16,9 @@ public class GachaCapsuleAnimation : MonoBehaviour
 	[SerializeField] private float openDistance = 180f;
 	[SerializeField] private float openDuration = 0.5f;
 
+	[Header("スキン表示")]
+	[SerializeField] private Image skinResultImage;
+
 	private Vector3 originalScale;
 	private Vector2 topStartPosition;
 	private Vector2 bottomStartPosition;
@@ -109,6 +112,9 @@ public class GachaCapsuleAnimation : MonoBehaviour
 
 			yield return null;
 		}
+
+		// スキンを表示
+		skinResultImage.gameObject.SetActive(true);
 
 		isPlaying = false;
 	}
