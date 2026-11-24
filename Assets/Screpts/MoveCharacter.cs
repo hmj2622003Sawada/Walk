@@ -61,12 +61,10 @@ public class MoveCharacter : MonoBehaviour
 		if (Keyboard.current.wKey.isPressed && walkflag == false)
 		{
 			walkflag = true;
-			animator.SetBool("IsWalk", true); // 歩く状態への移行
 		}
 		else if (Keyboard.current.wKey.wasReleasedThisFrame && walkflag == true)
 		{
 			walkflag = false;
-			animator.SetBool("IsWalk", false); // アイドル状態への移行
 		}
 
 		if (walkflag == true)
@@ -77,11 +75,7 @@ public class MoveCharacter : MonoBehaviour
 			transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
 		}
 
-		// 攻撃
-		if (Mouse.current.leftButton.wasPressedThisFrame)
-		{
-			animator.SetTrigger("IsAttack");
-		}
+
 
 	}
 }
